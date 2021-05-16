@@ -10,7 +10,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewDemoMainActivity3 extends AppCompatActivity {
+public class RecyclerViewDemoMainActivity3 extends AppCompatActivity  {
 
 
     //随机数生成

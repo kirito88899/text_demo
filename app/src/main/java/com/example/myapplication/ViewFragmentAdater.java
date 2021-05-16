@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.List;
 
 public class ViewFragmentAdater extends FragmentPagerAdapter {
     private FragmentManager mfragmentManager;
     private List<Fragment> mlist;
+
 
     public ViewFragmentAdater(@NonNull FragmentManager fm, List<Fragment>mlist) {
         super(fm);
@@ -28,4 +30,6 @@ public class ViewFragmentAdater extends FragmentPagerAdapter {
     public int getCount() {
         return mlist.size();
     }
+
+
 }

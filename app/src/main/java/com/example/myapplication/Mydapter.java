@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,6 +16,15 @@ import java.util.List;
 public class Mydapter extends RecyclerView.Adapter<Mydapter.MyViewHolder> {
 
     private List<AppEntity>apps;
+
+    public Mydapter(FragmentActivity activity, List<AppEntity> appEntityList) {
+        this.apps=appEntityList;
+
+    }
+
+    public Mydapter() {
+
+    }
 
     public void setData(List<AppEntity>apps){
         this.apps=apps;
@@ -27,7 +37,7 @@ public class Mydapter extends RecyclerView.Adapter<Mydapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //拿到item布局文件，把布局转化为View对象
-        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view,parent,true);
+        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view,parent,false);
         return new MyViewHolder(view);
     }
 

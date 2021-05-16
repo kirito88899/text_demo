@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ public class ListBottomMainActivity extends AppCompatActivity {
     private RadioButton liebiao;
     private RadioButton wode;
     private RadioGroup rg;
-    private List<Fragment> list;
+    private List<Fragment> list=new ArrayList<Fragment>();
+    private ViewFragmentAdater mviewpager;
 
 
 
@@ -40,6 +42,12 @@ public class ListBottomMainActivity extends AppCompatActivity {
         list.add(new ViewFragment());
         list.add(new ViewFragment2());
         list.add(new ViewFragment3());
+
+        mviewpager= new ViewFragmentAdater(this.getSupportFragmentManager(),list);
+        vpid.setOffscreenPageLimit(4);//ViewPager的缓存为4帧
+        vpid.setAdapter(mviewpager);
+        vpid.setCurrentItem(0);//初始设置ViewPager选中第一帧
+
         vpid.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @NonNull
             @Override
@@ -56,6 +64,8 @@ public class ListBottomMainActivity extends AppCompatActivity {
 
 
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
@@ -65,6 +75,7 @@ public class ListBottomMainActivity extends AppCompatActivity {
                         break;
                     case R.id.liebiao:
 
+                        vpid.setOffscreenPageLimit(2);
                         vpid.setCurrentItem(1);
                         break;
                     case R.id.wode:
